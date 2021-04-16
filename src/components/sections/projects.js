@@ -5,6 +5,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import Img from "gatsby-image"
 import VisibilitySensor from "react-visibility-sensor"
 import { motion } from "framer-motion"
+import { Link } from "gatsby"
 
 import { useOnScreen } from "../../hooks"
 import Context from "../../context"
@@ -18,7 +19,7 @@ const StyledSection = styled.section`
   width: 100%;
   height: auto;
   background: ${({ theme }) => theme.colors.background};
-  margin-top: 6rem;
+  margin-top: 4rem;
   .cta-btn {
     display: block;
     text-align: center;
@@ -124,7 +125,7 @@ const StyledProject = styled(motion.div)`
     justify-content: space-between;
     flex-shrink: 1;
     max-width: 62.5rem;
-    margin-bottom: 10rem;
+    margin-bottom: 5rem;
     padding-right: 0;
     /* Positioning of image and details should vary */
     flex-direction: ${({ position }) =>
@@ -184,10 +185,10 @@ const StyledProject = styled(motion.div)`
   }
   .screenshot {
     width: 100%;
-    max-width: 25rem;
+    max-width: 30rem;
     height: 15rem;
     border-radius: ${({ theme }) => theme.borderRadius};
-    box-shadow: 0 0 2.5rem rgba(0, 0, 0, 0.16);
+    /*box-shadow: 0 0 2.5rem rgba(0, 0, 0, 0.16);*/
     transition: all 0.3s ease-out;
     &:hover {
       transform: translate3d(0px, -0.125rem, 0px);
@@ -332,6 +333,16 @@ const Projects = ({ content }) => {
                           />
                         </a>
                       )}
+                      {frontmatter.appStore && (
+                        <a
+                          href={frontmatter.appStore}
+                          target="_blank"
+                          rel="nofollow noopener noreferrer"
+                          aria-label="External Link"
+                        >
+                          <Underlining>App Store</Underlining>
+                        </a>
+                      )}
                     </div>
                   </div>
                   {/* If image in viewport changes, update state accordingly */}
@@ -349,22 +360,22 @@ const Projects = ({ content }) => {
           })}
         </div>
       </StyledContentWrapper>
-      {sectionDetails.frontmatter.buttonVisible && (
-        <motion.a
-          ref={bRef}
-          variants={bVariants}
-          animate={bOnScreen ? "visible" : "hidden"}
-          className="cta-btn"
-          href={sectionDetails.frontmatter.buttonUrl}
-          target="_blank"
-          rel="nofollow noopener noreferrer"
-          aria-label="External Link"
-        >
+      <motion.a
+        ref={bRef}
+        variants={bVariants}
+        animate={bOnScreen ? "visible" : "hidden"}
+        className="cta-btn"
+        href={sectionDetails.frontmatter.buttonUrl}
+        target="_blank"
+        rel="nofollow noopener noreferrer"
+        aria-label="External Link"
+      >
+        <Link to="/projects">
           <Button type="button" textAlign="center" center>
-            {sectionDetails.frontmatter.buttonText}
+            View All Projects
           </Button>
-        </motion.a>
-      )}
+        </Link>
+      </motion.a>
     </StyledSection>
   )
 }

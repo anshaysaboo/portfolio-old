@@ -1,14 +1,13 @@
 module.exports = {
   //-- SITE SETTINGS -----
-  author: "@konstantinmuenster",
-  siteTitle: "Gatsby Starter Portfolio Minimal",
-  siteShortTitle: "Gatsby", // Used as logo text in header, footer, and splash screen
-  siteDescription:
-    "A modern one-page portfolio with a clean yet expressive design.",
-  siteUrl: "https://gatsby-starter-portfolio-minimal.netlify.app/",
+  author: "@anshaysaboo",
+  siteTitle: "Anshay Saboo's Portfolio",
+  siteShortTitle: "Anshay Saboo", // Used as logo text in header, footer, and splash screen
+  siteDescription: "Learn about me, my projects, my skills, and goals.",
+  siteUrl: "https://anshaysaboo.com",
   siteLanguage: "en_US",
   siteIcon: "content/favicon.png", // Relative to gatsby-config file
-  seoTitleSuffix: "Portfolio Minimal", // SEO title syntax will be e.g. "Imprint - {seoTitleSuffix}"
+  seoTitleSuffix: "Portfolio", // SEO title syntax will be e.g. "Imprint - {seoTitleSuffix}"
   useCookieBar: false, // If you use Google Analytics and want to be GDPR-compliant, set it to true
   googleAnalyticsTrackingId: "", // e.g. UA-XXXXXX-X
 
@@ -58,25 +57,12 @@ module.exports = {
   socialMedia: [
     {
       name: "Linkedin",
-      url: "https://www.linkedin.com/in/konstantin-muenster/",
-    },
-    {
-      name: "Medium",
-      url: "https://konstantinmuenster.medium.com/",
+      url: "https://www.linkedin.com/in/anshaysaboo/",
     },
     {
       name: "Github",
-      url:
-        "https://github.com/konstantinmuenster/gatsby-starter-portfolio-minimal",
+      url: "https://github.com/anshaysaboo",
     },
-    {
-      name: "Behance",
-      url: "https://www.behance.net/konstanmnster",
-    },
-    // {
-    //   name: "Mail",
-    //   url: "mailto:mail@konstantin.digital",
-    // },
   ],
 
   //-- NAVIGATION SETTINGS -----
@@ -87,8 +73,8 @@ module.exports = {
         url: "/#about",
       },
       {
-        name: "Features",
-        url: "/#projects",
+        name: "Projects",
+        url: "/projects",
       },
       {
         name: "Contact",
@@ -103,13 +89,13 @@ module.exports = {
     },
   },
   footerLinks: [
-    {
+    /*{
       name: "Privacy",
       url: "/privacy",
     },
     {
       name: "Imprint",
       url: "/imprint",
-    },
+    },*/
   ],
 }

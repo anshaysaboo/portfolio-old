@@ -21,7 +21,7 @@ const StyledContentWrapper = styled(ContentWrapper)`
   && {
     width: 100%;
     height: 100%;
-    min-height: 60vh;
+    min-height: 30vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,9 +49,11 @@ const StyledContentWrapper = styled(ContentWrapper)`
       @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
         margin-bottom: 0;
       }
+      font-size: 50px;
     }
     .subtitle {
       margin-top: -0.75rem;
+      color: #e74c3c;
     }
     .description {
       font-size: 1.125rem;
@@ -62,9 +64,10 @@ const StyledContentWrapper = styled(ContentWrapper)`
 
 const AnimatedUnderlining = motion.custom(Underlining)
 
-const Hero = ({ content }) => {
+const Hero = ({ content, showSocial }) => {
   const { frontmatter, body } = content[0].node
   const { isIntroDone, darkMode } = useContext(Context).state
+  console.log(content)
 
   // Controls to orchestrate animations of greetings, emoji, social profiles, underlining
   const gControls = useAnimation()
@@ -110,18 +113,7 @@ const Hero = ({ content }) => {
           data-testid="animated-heading"
         >
           <h1 className="title">
-            <div className="greetings">
-              {frontmatter.greetings}
-              <motion.div
-                animate={eControls}
-                style={{ originX: 0.7, originY: 0.7 }}
-              >
-                <Img
-                  className="emoji"
-                  fluid={frontmatter.icon.childImageSharp.fluid}
-                />
-              </motion.div>
-            </div>
+            <div className="greetings">{frontmatter.greetings}</div>
             {frontmatter.title}
           </h1>
           <h2 className="subtitle">
@@ -131,12 +123,19 @@ const Hero = ({ content }) => {
             </AnimatedUnderlining>
           </h2>
           <div className="description">
-            <MDXRenderer>{body}</MDXRenderer>
+            {body && <MDXRenderer>{body}</MDXRenderer>}
           </div>
         </motion.div>
-        <motion.div initial={{ opacity: 0, x: 20 }} animate={sControls}>
-          <Social fontSize=".95rem" padding=".3rem 1.25rem" width="auto" />
-        </motion.div>
+        {showSocial && (
+          <motion.div initial={{ opacity: 0, x: 20 }} animate={sControls}>
+            <Social
+              fontSize=".95rem"
+              padding=".3rem 1.25rem"
+              width="auto"
+              withIcon={true}
+            />
+          </motion.div>
+        )}
       </StyledContentWrapper>
     </StyledSection>
   )
@@ -151,6 +150,7 @@ Hero.propTypes = {
       }).isRequired,
     }).isRequired
   ).isRequired,
+  showSocial: PropTypes.bool.isRequired,
 }
 
 export default Hero
