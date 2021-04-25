@@ -11,6 +11,7 @@ import About from "../components/sections/about"
 import Interests from "../components/sections/interests"
 import Projects from "../components/sections/projects"
 import Contact from "../components/sections/contact"
+import Gallery from "../components/sections/gallery"
 import { seoTitleSuffix } from "../../config"
 
 const IndexPage = ({ data }) => {
@@ -36,7 +37,6 @@ const IndexPage = ({ data }) => {
           }
         />
         <Hero content={data.hero.edges} showSocial={true} />
-        {/*<Articles />*/}
         <About content={data.about.edges} />
         <Interests content={data.interests.edges} />
         <Projects content={data.projects.edges} />
@@ -145,7 +145,7 @@ export const pageQuery = graphql`
             appStore
             screenshot {
               childImageSharp {
-                fluid(maxWidth: 400, quality: 90) {
+                fluid(maxWidth: 1800, quality: 100) {
                   ...GatsbyImageSharpFluid
                 }
               }

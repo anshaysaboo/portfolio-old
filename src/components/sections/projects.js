@@ -115,7 +115,7 @@ const StyledProject = styled(motion.div)`
   margin-bottom: 2rem;
   flex-shrink: 0;
   padding-right: 2.5rem;
-  max-width: 20rem;
+  max-width: 20rem; /* Used to be 20rem */
   @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {
     max-width: 25rem;
     margin-top: 2rem;
@@ -124,19 +124,20 @@ const StyledProject = styled(motion.div)`
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     justify-content: space-between;
     flex-shrink: 1;
-    max-width: 62.5rem;
-    margin-bottom: 5rem;
+    max-width: 90%;
+    margin-bottom: 3rem;
     padding-right: 0;
     /* Positioning of image and details should vary */
     flex-direction: ${({ position }) =>
-      position % 2 !== 0 ? "row" : "row-reverse"};
+      position % 1 !== 0 ? "row" : "row-reverse"};
   }
   .details {
     width: 100%;
-    max-width: 25rem;
+    max-width: 20rem;
     display: flex;
     flex-direction: column;
     margin-top: 3rem;
+    margin-left: 2rem;
     @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
       margin-top: 0;
     }
@@ -185,8 +186,8 @@ const StyledProject = styled(motion.div)`
   }
   .screenshot {
     width: 100%;
-    max-width: 30rem;
-    height: 15rem;
+    max-width: 40rem;
+    height: 10rem;
     border-radius: ${({ theme }) => theme.borderRadius};
     /*box-shadow: 0 0 2.5rem rgba(0, 0, 0, 0.16);*/
     transition: all 0.3s ease-out;
@@ -195,7 +196,7 @@ const StyledProject = styled(motion.div)`
       box-shadow: 0 0 2.5rem rgba(0, 0, 0, 0.32);
     }
     @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-      height: 18.75rem;
+      height: 18.75rem; /* Previosly 18.75rem */
     }
   }
 `
