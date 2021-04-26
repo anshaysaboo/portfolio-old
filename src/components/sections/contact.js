@@ -81,10 +81,10 @@ const Contact = ({ content }) => {
         <h3>{frontmatter.title}</h3>
         <MDXRenderer>{body}</MDXRenderer>
         <div className="profile">
-          <Img
+          {/*<Img
             className="avatar"
             fluid={frontmatter.profileImage.childImageSharp.fluid}
-          />
+          />*/}
           <div className="details">
             <strong>{frontmatter.name}</strong>
             <br />
