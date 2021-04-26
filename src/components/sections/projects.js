@@ -201,10 +201,10 @@ const StyledProject = styled(motion.div)`
   }
 `
 
-const Projects = ({ content }) => {
+const Projects = ({ content, showViewMore = true, limit = 0 }) => {
   const { darkMode } = useContext(Context).state
   const sectionDetails = content[0].node
-  const projects = content.slice(1, content.length)
+  const projects = content.slice(1, limit === 0 ? content.length : limit + 1)
 
   // visibleProject is needed to show which project is currently
   // being viewed in the horizontal slider on mobile and tablet
@@ -272,6 +272,7 @@ const Projects = ({ content }) => {
         <div className="projects">
           {projects.map((project, key) => {
             const { body, frontmatter } = project.node
+            console.log(key)
             return (
               <VisibilitySensor
                 key={key}
@@ -341,7 +342,9 @@ const Projects = ({ content }) => {
                           rel="nofollow noopener noreferrer"
                           aria-label="External Link"
                         >
-                          <Underlining>App Store</Underlining>
+                          <Underlining>
+                            <b>App Store</b>
+                          </Underlining>
                         </a>
                       )}
                     </div>
@@ -361,22 +364,24 @@ const Projects = ({ content }) => {
           })}
         </div>
       </StyledContentWrapper>
-      <motion.a
-        ref={bRef}
-        variants={bVariants}
-        animate={bOnScreen ? "visible" : "hidden"}
-        className="cta-btn"
-        href={sectionDetails.frontmatter.buttonUrl}
-        target="_blank"
-        rel="nofollow noopener noreferrer"
-        aria-label="External Link"
-      >
-        <Link to="/projects">
-          <Button type="button" textAlign="center" center>
-            View All Projects
-          </Button>
-        </Link>
-      </motion.a>
+      {showViewMore && (
+        <motion.a
+          ref={bRef}
+          variants={bVariants}
+          animate={bOnScreen ? "visible" : "hidden"}
+          className="cta-btn"
+          href={sectionDetails.frontmatter.buttonUrl}
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+          aria-label="External Link"
+        >
+          <Link to="/projects">
+            <Button type="button" textAlign="center" center>
+              View All Projects
+            </Button>
+          </Link>
+        </motion.a>
+      )}
     </StyledSection>
   )
 }
@@ -390,6 +395,8 @@ Projects.propTypes = {
       }).isRequired,
     }).isRequired
   ).isRequired,
+  showViewMore: PropTypes.bool.isRequired,
+  limit: PropTypes.number.isRequired,
 }
 
 export default Projects

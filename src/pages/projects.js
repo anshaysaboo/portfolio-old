@@ -51,7 +51,7 @@ const ProjectsPage = ({ data }) => {
           ]}
           showSocial={false}
         />
-        <Projects content={data.projects.edges} />
+        <Projects content={data.projects.edges} showViewMore={false} />
       </Layout>
     </GlobalStateProvider>
   )

@@ -39,7 +39,7 @@ const IndexPage = ({ data }) => {
         <Hero content={data.hero.edges} showSocial={true} />
         <About content={data.about.edges} />
         <Interests content={data.interests.edges} />
-        <Projects content={data.projects.edges} />
+        <Projects content={data.projects.edges} limit={3} />
         <Contact content={data.contact.edges} />
       </Layout>
     </GlobalStateProvider>
