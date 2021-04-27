@@ -19,10 +19,10 @@ export default (ref, threshold = 0.25) => {
       }
     )
     if (element) {
-      setTimeout(() => observer.observe(element), 3500)
+      setTimeout(() => observer.observe(element), 500) // 3500
     }
     return () => {
-      observer.unobserve(element)
+      if (typeof element === "Element") observer.unobserve(element)
     }
   }, [ref, threshold])
   return isIntersecting
