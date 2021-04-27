@@ -50,6 +50,7 @@ const StyledContentWrapper = styled(ContentWrapper)`
         margin-bottom: 0;
       }
       font-size: 50px;
+      line-height: normal;
     }
     .subtitle {
       margin-top: -0.75rem;

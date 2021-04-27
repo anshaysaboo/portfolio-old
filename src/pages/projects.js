@@ -25,6 +25,8 @@ const ProjectsPage = ({ data }) => {
     darkMode: false,
   }
 
+  console.log(data.hero)
+
   return (
     <GlobalStateProvider initialState={globalState}>
       <Layout>
@@ -36,20 +38,22 @@ const ProjectsPage = ({ data }) => {
           }
         />
         <Hero
-          content={[
+          content={
+            /*[
             {
               node: {
                 frontmatter: {
                   greetings: "",
-                  title: "Projects",
+                  title: "Portfolio",
                   subtitle: "",
                   subtitlePrefix: "Past work that I'm proud of.",
                 },
                 body: "",
               },
             },
-          ]}
-          showSocial={false}
+          ]*/ data
+              .hero.edges
+          }
         />
         <Projects content={data.projects.edges} showViewMore={false} />
       </Layout>
@@ -76,26 +80,26 @@ export const pageQuery = graphql`
         }
       }
     }
-    hero: allMdx(filter: { fileAbsolutePath: { regex: "/index/hero/" } }) {
+    hero: allMdx(
+      filter: {
+        fileAbsolutePath: { regex: "/index/projects/" }
+        id: { eq: "e008a4cc-9726-5017-9d8a-002821d9c487" }
+      }
+    ) {
       edges {
         node {
           body
+          id
           frontmatter {
             greetings
             title
             subtitlePrefix
             subtitle
-            icon {
-              childImageSharp {
-                fluid(maxWidth: 60, quality: 90) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
           }
         }
       }
     }
+
     projects: allMdx(
       filter: {
         fileAbsolutePath: { regex: "/index/projects/" }

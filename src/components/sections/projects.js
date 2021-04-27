@@ -12,6 +12,7 @@ import Context from "../../context"
 import ContentWrapper from "../../styles/contentWrapper"
 import Underlining from "../../styles/underlining"
 import Button from "../../styles/button"
+import SmallButton from "../../styles/small-button"
 import Icon from "../../components/icons"
 import { lightTheme, darkTheme } from "../../styles/theme"
 
@@ -172,7 +173,7 @@ const StyledProject = styled(motion.div)`
       margin-top: 1rem;
       a {
         display: inline-block;
-        margin-right: 2rem;
+        margin-right: 1rem;
       }
       svg {
         width: 1.3rem;
@@ -236,6 +237,7 @@ const Projects = ({ content, showViewMore = true, limit = 0 }) => {
     projects.forEach(project => {
       initial[project.node.frontmatter.position] = false
     })
+    initial[1] = true
     setOnScreen(initial)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -325,14 +327,14 @@ const Projects = ({ content, showViewMore = true, limit = 0 }) => {
                           rel="nofollow noopener noreferrer"
                           aria-label="External Link"
                         >
-                          <Icon
+                          {/*<Icon
                             name="external"
                             color={
                               darkMode
                                 ? darkTheme.colors.subtext
                                 : lightTheme.colors.subtext
-                            }
-                          />
+                            }/>*/}
+                          <SmallButton>Website</SmallButton>
                         </a>
                       )}
                       {frontmatter.appStore && (
@@ -342,9 +344,10 @@ const Projects = ({ content, showViewMore = true, limit = 0 }) => {
                           rel="nofollow noopener noreferrer"
                           aria-label="External Link"
                         >
-                          <Underlining>
+                          {/*<Underlining>
                             <b>App Store</b>
-                          </Underlining>
+                          </Underlining>*/}
+                          <SmallButton>App Store</SmallButton>
                         </a>
                       )}
                     </div>

@@ -47,7 +47,7 @@ const StyledInterests = styled.div`
     ${({ itemCount }) => Math.ceil(itemCount / 2)},
     15.625rem
   );
-  grid-template-rows: repeat(2, auto);
+  grid-template-rows: repeat(3, auto);
   grid-auto-flow: column;
   column-gap: 1rem;
   row-gap: 1rem;
