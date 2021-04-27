@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
+import PropTypes from "prop-types"
 
 import Layout from "../components/layout"
 import GlobalStateProvider from "../context/provider"
@@ -168,7 +169,7 @@ export default function ProjectPost({ data }) {
   )
 }
 
-Projects.propTypes = {
+ProjectPost.propTypes = {
   data: PropTypes.shape({
     mdx: PropTypes.shape({
       body: PropTypes.string.isRequired,
