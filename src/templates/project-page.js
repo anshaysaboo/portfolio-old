@@ -168,6 +168,15 @@ export default function ProjectPost({ data }) {
   )
 }
 
+Projects.propTypes = {
+  data: PropTypes.shape({
+    mdx: PropTypes.shape({
+      body: PropTypes.string.isRequired,
+      frontmatter: PropTypes.object.isRequired,
+    }).isRequired,
+  }).isRequired,
+}
+
 export const query = graphql`
   query($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
