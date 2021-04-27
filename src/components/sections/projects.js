@@ -293,7 +293,11 @@ const Projects = ({ content, showViewMore = true, limit = 0 }) => {
                     <div className="category">
                       {frontmatter.emoji} {frontmatter.category}
                     </div>
-                    <div className="title">{frontmatter.title}</div>
+                    <div className="title">
+                      <Link to={project.node.fields.slug}>
+                        {frontmatter.title}
+                      </Link>
+                    </div>
                     <MDXRenderer>{body}</MDXRenderer>
                     <div className="tags">
                       {frontmatter.tags.map(tag => (

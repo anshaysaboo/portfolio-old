@@ -74,13 +74,6 @@ export const pageQuery = graphql`
             title
             subtitlePrefix
             subtitle
-            icon {
-              childImageSharp {
-                fluid(maxWidth: 60, quality: 90) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
           }
         }
       }
@@ -136,6 +129,9 @@ export const pageQuery = graphql`
       edges {
         node {
           body
+          fields {
+            slug
+          }
           frontmatter {
             title
             category

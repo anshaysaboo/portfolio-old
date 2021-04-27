@@ -47,7 +47,7 @@ const StyledContentWrapper = styled(ContentWrapper)`
     .title {
       margin-bottom: 1.5rem;
       @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-        margin-bottom: 0;
+        margin-bottom: 0.5rem;
       }
       font-size: 50px;
       line-height: normal;
@@ -117,7 +117,10 @@ const Hero = ({ content, showSocial }) => {
             <div className="greetings">{frontmatter.greetings}</div>
             {frontmatter.title}
           </h1>
-          <h2 className="subtitle">
+          <h2
+            className="subtitle"
+            style={{ color: frontmatter.color ? frontmatter.color : "#e74c3c" }}
+          >
             {frontmatter.subtitlePrefix}{" "}
             <AnimatedUnderlining animate={uControls} big>
               {frontmatter.subtitle}
