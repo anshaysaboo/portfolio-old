@@ -2,12 +2,11 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
-const StyledButton = styled.button`
+const StyledButtonDark = styled.button`
   width: 100%;
   height: 2rem;
   background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.background};
-  padding: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
   margin: 0 ${({ center }) => (center ? "auto" : "0")};
@@ -32,11 +31,29 @@ const StyledButton = styled.button`
   }
 `
 
-const SmallButton = ({ onClick, textAlign, center, children }) => (
-  <StyledButton onClick={onClick} textAlign={textAlign} center={center}>
-    {children}
-  </StyledButton>
-)
+const StyledButtonLight = styled(StyledButtonDark)`
+  color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.background};
+  border: 0.125rem solid ${({ theme }) => theme.colors.primary};
+`
+
+const SmallButton = ({
+  onClick,
+  textAlign,
+  center,
+  children,
+  type = "dark",
+}) => {
+  return type === "light" ? (
+    <StyledButtonLight onClick={onClick} textAlign={textAlign} center={center}>
+      {children}
+    </StyledButtonLight>
+  ) : (
+    <StyledButtonDark onClick={onClick} textAlign={textAlign} center={center}>
+      {children}
+    </StyledButtonDark>
+  )
+}
 
 SmallButton.propTypes = {
   onClick: PropTypes.func,
@@ -46,6 +63,7 @@ SmallButton.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
+  type: PropTypes.string,
 }
 
 export default SmallButton

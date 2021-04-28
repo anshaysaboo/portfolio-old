@@ -354,6 +354,9 @@ const Projects = ({ content, showViewMore = true, limit = 0 }) => {
                           <SmallButton>App Store</SmallButton>
                         </a>
                       )}
+                      <Link to={project.node.fields.slug}>
+                        <SmallButton type="light">More</SmallButton>
+                      </Link>
                     </div>
                   </div>
                   {/* If image in viewport changes, update state accordingly */}
