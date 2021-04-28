@@ -24,9 +24,9 @@ exports.createPages = async ({ graphql, actions }) => {
     query {
       projects: allMdx(
         filter: {
+          fields: { slug: { ne: "/projects/projects/" } }
           fileAbsolutePath: { regex: "/index/projects/" }
           frontmatter: { visible: { eq: true } }
-          id: { ne: "2d2e2014-1f78-5b11-ba48-57eac5e393d4" }
         }
         sort: { fields: [frontmatter___position], order: ASC }
       ) {
