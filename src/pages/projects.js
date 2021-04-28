@@ -83,7 +83,7 @@ export const pageQuery = graphql`
     hero: allMdx(
       filter: {
         fileAbsolutePath: { regex: "/index/projects/" }
-        id: { eq: "e008a4cc-9726-5017-9d8a-002821d9c487" }
+        frontmatter: { isHero: { eq: true } }
       }
     ) {
       edges {
