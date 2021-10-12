@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import Img from "gatsby-image"
+import { StaticQuery, graphql } from "gatsby"
 
 import { siteShortTitle } from "../../config"
 
@@ -19,15 +20,32 @@ const StyledLogo = styled.div`
   user-select: auto !important;
 `
 
-const Logo = ({ size, color }) => (
-  <StyledLogo color={color} size={size}>
-    {siteShortTitle}
-  </StyledLogo>
+const Logo = ({ data, color, size }) => (
+  <StaticQuery
+    query={graphql`
+      {
+        image: allFile(filter: { relativePath: { eq: "favicon.png" } }) {
+          nodes {
+            childImageSharp {
+              fixed(width: 50, height: 50, quality: 90) {
+                ...GatsbyImageSharpFixed
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={data => {
+      console.log(data)
+      return <Img fixed={data.image.nodes[0].childImageSharp.fixed} />
+    }}
+  />
 )
 
 Logo.propTypes = {
   size: PropTypes.string,
   color: PropTypes.string,
+  data: PropTypes.object.isRequired,
 }
 
 export default Logo
